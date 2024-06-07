@@ -91,12 +91,16 @@ GEM
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.3)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.7.2)
     irb (1.13.1)
       rdoc (>= 4.0.0)
@@ -249,7 +253,9 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  htmlbeautifier
   importmap-rails
+  inline_svg
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)

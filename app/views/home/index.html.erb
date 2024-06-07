@@ -1,0 +1,37 @@
+<div class="px-8 py-4 bg-gray-200 h-screen">
+  <nav class="flex justify-between mb-8">
+    <h1>
+      <a href="" class="text-4xl uppercase font-extrabold text-gray-900 hover:italic">logo</a>
+    </h1>
+    <div class=" flex gap-6 ">
+      <a href="" class =" bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-800 flex items-center">login
+        <span>
+          <%= inline_svg_tag("arrow-right-circle.svg",class: "size-6") %>
+        </span>
+      </a>
+      <a href=""class ="bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" >Signup</a>
+    </div>
+  </nav>
+  <main class="grid md:flex items-center justify-around relative">
+    <section class="md:basis-1/2">
+      <div class=" hidden w-1/2 lg:flex justify-between absolute top-0">
+        <%= inline_svg_tag("print.svg",class: "size-40") %>
+        <%= inline_svg_tag("sign.svg",class: "size-40") %>
+      </div>
+      <h2 class="font-bold text-4xl capitalize mb-4">Manage your projects with ease</h2>
+      <p class="mb-8 text-2xl">ProjectTask is a project management tool that helps you organize your projects and tasks.</p>
+      <a href="" class="bg-orange-600 p-4 text-gray-200 text-4xl capitalize rounded-sm hover:text-gray-600 flex justify-center items-center" >Get started
+        <span>
+          <%= inline_svg_tag("forward.svg",class: "size-12") %>
+        </span>
+      </a>
+      <div class=" hidden w-1/2 lg:flex justify-between absolute bottom-0">
+        <%= inline_svg_tag("star.svg",class: "size-40") %>
+        <%= inline_svg_tag("flash.svg",class: "size-40") %>
+      </div>
+    </section>
+    <div class="md:basis-1/2">
+      <%= image_tag("hero.png", class: "mt-8") %>
+    </div>
+  </main>
+</div>
