@@ -1,0 +1,24 @@
+  <nav class="flex justify-between mb-8">
+  <h1>
+    <a href="/" class="text-4xl uppercase font-extrabold text-gray-900 hover:italic">logo</a>
+  </h1>
+  <% unless user_signed_in? %>
+    <div class=" flex gap-6 ">
+      <a href="/users/sign_in" class =" bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-800 flex items-center">login
+        <span>
+          <%= inline_svg_tag("arrow-right-circle.svg",class: "size-6") %>
+        </span>
+      </a>
+      <a href="/users/sign_up"class ="bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" >Signup</a>
+    </div>
+  <% else %>
+    <div class=" flex gap-6 ">
+      <a href="/users/sign_out"  data-turbo-method="delete" class =" bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-800 flex items-center">logout
+        <span>
+          <%= inline_svg_tag("arrow-right-circle.svg",class: "size-6") %>
+        </span>
+      </a>
+      <a href="/users/sign_up"class ="bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" >Dashboard</a>
+    </div>
+  <% end %>
+</nav>

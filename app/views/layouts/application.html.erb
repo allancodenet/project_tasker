@@ -11,6 +11,11 @@
   </head>
   <body>
     <main class="">
+      <% if notice.present? %>
+        <p class="bg-green-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6"><%= notice %></p>
+      <%elsif alert.present? %>
+        <p class="bg-red-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
