@@ -1,0 +1,18 @@
+<nav class="bg-gray-700 py-4 px-6  text-gray-200 flex items-center justify-between">
+  <div>
+    <button data-action="click->toggle#toggleSidebar">
+      <%= inline_svg_tag("hamburger.svg") %>
+    </button>
+  </div>
+  <div class="flex items-center relative">
+    <input type="text" name="" id="" class=" rounded-md bg-gray-700" placeholder="Search for projects">
+    <%= inline_svg_tag("search.svg", class: "absolute right-0 cursor-pointer") %>
+  </div>
+  <div>
+    <%= inline_svg_tag("notification.svg") %>
+  </div>
+  <div data-action="click->toggle#toggleProfileCard" class="relative cursor-pointer">
+    <%= inline_svg_tag("user.svg") %>
+    <%= render "profile_card" %>
+  </div>
+</nav>
