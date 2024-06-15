@@ -1,0 +1,23 @@
+<div class="text-gray-200 p-4 w-full">
+  <div class="w-full">
+    <table class="bg-gray-800 rounded-md w-full">
+      <thead>
+        <tr class="text-left uppercase border-b border-gray-500">
+          <th class="px-4 py-3"> Name</th>
+          <th class="px-4 py-3"> Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr class=" border-b border-gray-500 capitalize">
+            <td class="px-4 py-3"><%= project %></td>
+            <td class="px-4 py-3"> 80%</td>
+            <td class="py-3"> <%= inline_svg_tag("edit.svg") %></td>
+            <td class="py-3"> <%= inline_svg_tag("view.svg") %></td>
+            <td class="p py-3"> <%= inline_svg_tag("delete.svg") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

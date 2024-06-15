@@ -12,7 +12,13 @@
   <body>
     <main class="">
       <%= render "shared/flash" %>
-      <%= yield %>
+      <div data-controller= "toggle" class="h-screen bg-gray-900">
+        <%= render "dashboard/admin_nav" %>
+        <div class="flex h-full">
+          <%= render "dashboard/sidebar" %>
+          <%= yield %>
+        </div>
+      </div>
     </main>
   </body>
 </html>
