@@ -1,11 +1,44 @@
 class ProjectsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :set_project, only: [:edit, :update, :destroy]
   def index
-    @projects =[]
-    10.times.each do |index|
-      @projects << "project_#{index + 1}"
-    end
+    @projects = Project.all
+  end
 
+  def create
+    @project = current_user.projects.build(project_params)
+    if @project.save
+      redirect_to projects_url, notice: "Project Created"
+    else
+      redirect_to projects_url, alert: @project.errors.full_messages.join(",")
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @project.update(project_params)
+    if @project.save
+      redirect_to projects_url, notice: "Project Updated"
+    else
+      redirect_to projects_url, alert: @project.errors.full_messages.join(",")
+    end
+  end
+
+  def destroy
+    @project.destroy!
+    redirect_to projects_url, notice: "Project deleted"
+  end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:name)
   end
 end

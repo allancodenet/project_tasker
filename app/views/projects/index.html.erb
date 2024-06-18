@@ -1,5 +1,6 @@
 <div class="text-gray-200 p-4 w-full">
-  <div class="w-full">
+  <%= render "add_project_form" %>
+  <div class="w-full mt-4">
     <table class="bg-gray-800 rounded-md w-full">
       <thead>
         <tr class="text-left uppercase border-b border-gray-500">
@@ -10,11 +11,18 @@
       <tbody>
         <% @projects.each do |project| %>
           <tr class=" border-b border-gray-500 capitalize">
-            <td class="px-4 py-3"><%= project %></td>
+            <td class="px-4 py-3"><%= project.name %></td>
             <td class="px-4 py-3"> 80%</td>
-            <td class="py-3"> <%= inline_svg_tag("edit.svg") %></td>
+            <td class="py-3">
+              <%= link_to  edit_project_path(project) do%>
+                <%= inline_svg_tag("edit.svg") %>
+              <% end %>
+            </td>
             <td class="py-3"> <%= inline_svg_tag("view.svg") %></td>
-            <td class="p py-3"> <%= inline_svg_tag("delete.svg") %></td>
+            <td class="p py-3">
+              <%= button_to project_path(project), method: :delete,data:{turbo_confirm:("Are You Sure?")} do %>
+                <%= inline_svg_tag("delete.svg") %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
