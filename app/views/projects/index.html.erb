@@ -18,7 +18,11 @@
                 <%= inline_svg_tag("edit.svg") %>
               <% end %>
             </td>
-            <td class="py-3"> <%= inline_svg_tag("view.svg") %></td>
+            <td class="py-3">
+              <%= link_to  project_path(project) do%>
+                <%= inline_svg_tag("view.svg") %>
+              <% end %>
+            </td>
             <td class="p py-3">
               <%= button_to project_path(project), method: :delete,data:{turbo_confirm:("Are You Sure?")} do %>
                 <%= inline_svg_tag("delete.svg") %></td>

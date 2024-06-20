@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :tasks
   devise_for :users
   resources :dashboard, only: [:index]
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
   root "home#index"
 end
