@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
   before_action :set_task, only: %i[show edit update destroy]
+  before_action :set_project
 
   # GET /tasks or /tasks.json
   def index
@@ -64,6 +65,9 @@ class TasksController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_task
     @task = Task.find(params[:id])
+  end
+  def set_project
+    @project = Project.find(params[:project_id])
   end
 
   # Only allow a list of trusted parameters through.
