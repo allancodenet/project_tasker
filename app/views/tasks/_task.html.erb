@@ -18,7 +18,6 @@
           </td>
           <td class="px-4 py-3"><%= task.name %></td>
           <td class="px-4 py-3"> <%= task.completed? %></td>
-          <td class="px-4 py-3"> <%= task.due_date %></td>
           <td class="px-4 py-3"> <%= task.completed_at %></td>
           <td class="py-3">
             <%= link_to  edit_project_task_path(@project, task), data: { turbo: true, turbo_frame: :modal} do%>
