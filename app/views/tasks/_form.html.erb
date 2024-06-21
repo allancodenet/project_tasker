@@ -22,10 +22,6 @@
           <%= form.date_field :due_date, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
         </div>
         <div class="my-5">
-          <%= form.label :completed_at %>
-          <%= form.datetime_field :completed_at, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-        </div>
-        <div class="my-5">
           <%= form.label :priority %>
           <%= form.select :priority, Task.priorities.keys, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
         </div>

@@ -66,12 +66,13 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   end
+
   def set_project
     @project = Project.find(params[:project_id])
   end
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:name, :due_date, :completed_at, :priority, :project_id)
+    params.require(:task).permit(:name, :due_date, :completed, :completed_at, :priority, :project_id)
   end
 end
