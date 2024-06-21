@@ -1,12 +1,12 @@
 <div data-controller="close"  data-close-timeout-value= "3000" data-close-hidden-class= "hidden" data-close-target="alert" >
   <% if notice.present? %>
-    <p class="bg-green-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6 flex items-center justify-center "><%= notice %>
+    <p class="z-10 bg-green-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6 flex items-center justify-center "><%= notice %>
       <span  data-action="click->close#hide" class ="cursor-pointer">
         <%= inline_svg_tag("close.svg") %>
       </span>
     </p>
   <%elsif alert.present? %>
-    <p  class="bg-red-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6 flex items-center justify-center"><%= alert %>
+    <p  class="z-10 bg-red-600 h-8 text-gray-200 font-semibold  rounded-md px-4 absolute bottom-6 right-6 flex items-center justify-center"><%= alert %>
       <span data-action="click->close#hide" class ="cursor-pointer">
         <%= inline_svg_tag("close.svg") %>
       </span>
