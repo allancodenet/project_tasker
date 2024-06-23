@@ -6,6 +6,8 @@ class Task < ApplicationRecord
   enum :priority, {high: 0, medium: 1, low: 2}
   before_update :update_completed_at
 
+  scope :incomplete_first, -> { order(completed_at: :desc) }
+
   def due_date_is_futuristic
     if due_date.present? && due_date < Date.today
       errors.add(:due_date, "Must  be in future")
