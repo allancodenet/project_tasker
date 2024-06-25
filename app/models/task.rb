@@ -7,6 +7,7 @@ class Task < ApplicationRecord
   before_update :update_completed_at
 
   scope :incomplete_first, -> { order(completed_at: :desc) }
+  scope :completed, -> { where(completed: true) }
 
   def due_date_is_futuristic
     if due_date.present? && due_date < Date.today

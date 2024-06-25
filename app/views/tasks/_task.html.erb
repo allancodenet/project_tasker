@@ -12,9 +12,9 @@
     <tbody>
       <% @project.tasks.incomplete_first.each do |task| %>
         <tr class=" border-b border-gray-500 capitalize <%= "line-through text-orange-600" if task.completed?%> ">
-          <td class="px-4 py-3">
+          <td class="px-4 py-3 ">
             <%= form_with model: [@project, task] do |form| %>
-              <%= form.check_box :completed, onchange:"this.form.requestSubmit()" %>
+              <%= form.check_box :completed, class: "cursor-pointer", onchange:"this.form.requestSubmit()" %>
             <% end %>
           </td>
           <td class="px-4 py-3"> <%= task.completed? ? "#{time_ago_in_words(task.completed_at)} ago": "Incomplete" %>  </td>

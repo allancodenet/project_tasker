@@ -3,5 +3,7 @@
     <h1 class="font-bold text-4xl"> <%= @project.name %></h1>
     <%= link_to "New task", new_project_task_path(@project), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium", data: { turbo: true, turbo_frame: :modal} %>
   </div>
+  <progress class="w-full mt-4" value="<%=@project.tasks.completed.size%>" max="<%=@project.tasks.size%>">
+  </progress>
   <%= render "tasks/task" %>
 </div>
