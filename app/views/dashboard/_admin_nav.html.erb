@@ -4,9 +4,9 @@
       <%= inline_svg_tag("hamburger.svg") %>
     </button>
   </div>
-  <%= form_with url:search_path, method: :get  do |form| %>
+  <%= form_with url:search_path, method: :get , data: {controller: "search"} do |form| %>
     <div class="flex items-center relative">
-      <%= form.text_field :name , class:" rounded-md bg-gray-700",  placeholder: "Search for projects" %>
+      <%= form.text_field :name , class:" rounded-md bg-gray-700",  placeholder: "Search for projects", data:{ search_target: "input", action: "input->search#debounce"} %>
       <button type="submit" class= "absolute right-0 cursor-pointer">
         <%= inline_svg_tag("search.svg") %>
       </button>
