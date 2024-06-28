@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
   def index
-    @projects = Project.where(name: params[:name])
+    @name = params[:name]
+    @projects = Project.where("name ILIKE?", "%#{@name}%")
   end
 end
