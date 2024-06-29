@@ -4,9 +4,9 @@
       <tr class="text-left capitalize border-b border-gray-500">
         <th class="px-4 py-3"> complete</th>
         <th class="px-4 py-3"> Completed in</th>
-        <th class="px-4 py-3"> Name</th>
+        <th class="px-4 py-3"> <%= sort_link(@q, :name) %></th>
         <th class="px-4 py-3"> priority</th>
-        <th class="px-4 py-3"> due in</th>
+        <th class="px-4 py-3"> <%= sort_link(@q, :due_date, "Due" ) %></th>
       </tr>
     </thead>
     <tbody>
