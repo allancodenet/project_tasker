@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :project
   validates :name, :due_date, presence: true
-  validate :due_date_is_futuristic
+  validates :due_date, comparison: {greater_than: Date.current}
+  # validate :due_date_is_futuristic
   validates :name, uniqueness: {case_sensitive: false, scope: :project_id}
   enum :priority, {high: 0, medium: 1, low: 2}
   before_update :update_completed_at
@@ -9,8 +10,12 @@ class Task < ApplicationRecord
   scope :incomplete_first, -> { order(completed_at: :desc) }
   scope :completed, -> { where(completed: true) }
 
+  def expired?
+    due_date < Date.current && !completed
+  end
+
   def due_date_is_futuristic
-    if due_date.present? && due_date < Date.today
+    if due_date.present? && due_date < Date.current
       errors.add(:due_date, "Must  be in future")
     end
   end
