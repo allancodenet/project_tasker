@@ -2,7 +2,7 @@
   <ul>
     <%current_user.notifications.each do |notification| %>
       <li class="mb-6">
-        <%= link_to notification.message %>
+        <%= link_to notification.message, notifications_path %>
       </li>
     <% end %>
   </ul>

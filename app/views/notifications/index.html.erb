@@ -1,0 +1,17 @@
+<div class= "w-96 p-6 mx-auto">
+  <div class="flex justify-between p-2">
+    <h1 class = "font-bold text-gray-300">Notifications</h1>
+    <div>
+      <%= link_to  "Mark all as read", class: "text-blue-400" %>
+    </div>
+  </div>
+  <div class="p-4 rounded-lg bg-gray-400">
+    <ul>
+      <% @notifications.each do |notification| %>
+        <li class = "mb-6 border-b border-gray-900">
+          <%= link_to notification.message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
