@@ -1,8 +1,17 @@
 <div data-toggle-target="notificationCard" class=" hidden rounded-md font-semibold capitalize bg-gray-600 w-96 h-fit p-4 absolute right-0 mt-4">
   <ul>
-    <%current_user.notifications.each do |notification| %>
+    <%current_user.notifications.unread.each do |notification| %>
       <li class="mb-6">
         <%= link_to notification.message, notifications_path %>
+      </li>
+    <% end %>
+    <%if  current_user.notifications.unread.any?%>
+      <li class="mb-6 bg-gray-900 rounded-md p-2">
+        <%= link_to "See all", notifications_path %>
+      </li>
+    <% else %>
+      <li class="mb-6 bg-gray-900 rounded-md p-2">
+        No unread Notifications
       </li>
     <% end %>
   </ul>
