@@ -80,3 +80,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "noticed", "~> 2.4"
+
+gem "good_job", "~> 4.0"
