@@ -5,10 +5,10 @@
 class UrgentTaskNotifier < ApplicationNotifier
   # Add your delivery methods
   #
-  # deliver_by :email do |config|
-  #   config.mailer = "UserMailer"
-  #   config.method = "new_post"
-  # end
+  deliver_by :email do |config|
+    config.mailer = "UrgentTaskMailer"
+    config.method = "urgent_task"
+  end
   #
   # bulk_deliver_by :slack do |config|
   #   config.url = -> { Rails.application.credentials.slack_webhook_url }
@@ -24,7 +24,7 @@ class UrgentTaskNotifier < ApplicationNotifier
 
   notification_methods do
     def message
-      "#{record.name} is due today"
+      "#{record.name}  in #{record.project.name} is due today"
     end
 
     def url
