@@ -1,6 +1,6 @@
 <div data-toggle-target="notificationCard" class=" hidden rounded-md font-semibold capitalize bg-gray-600 w-96 h-fit p-4 absolute right-0 mt-4">
   <ul>
-    <%current_user.notifications.unread.each do |notification| %>
+    <%current_user.notifications.unread.limit(5).each do |notification| %>
       <li class="mb-6">
         <%= link_to notification.message, notifications_path %>
       </li>
