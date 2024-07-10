@@ -1,4 +1,4 @@
- <main class ="p-3 text-gray-200 mx-auto">
+ <main class = "p-3 text-gray-200 mx-auto">
   <div class="flex gap-6 flex-wrap ">
     <div class="p-4 rounded-lg bg-gray-600 h-24 min-w-24 text-center">
       <p class="capitalize  mb-3 border-2 border-dotted  border-gray-800 rounded-md p-1">Total Projects</p>
@@ -25,4 +25,5 @@
       <p class= "font-bold bg-gray-800 rounded-md"> <%= @tasks.pending.size %></p>
     </div>
   </div>
+  <%= render "charts" %>
 </main>

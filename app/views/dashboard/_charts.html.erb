@@ -1,0 +1,10 @@
+<div class=" mt-6 grid text-center md:flex gap-6  md:justify-around">
+  <div class=" rounded-md bg-gray-300 p-2 mt-3">
+    <h2 class= "capitalize text-gray-900"> Tasks by Priority</h2>
+    <%= pie_chart @tasks.group(:priority).count %>
+  </div>
+  <div class=" rounded-md bg-gray-300 p-2 mt-3">
+    <h2 class= "capitalize text-gray-900"> Tasks by due date</h2>
+    <%= line_chart @tasks.group_by_day(:due_date).count %>
+  </div>
+</div>
