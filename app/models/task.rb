@@ -12,6 +12,8 @@ class Task < ApplicationRecord
 
   scope :incomplete_first, -> { order(completed_at: :desc) }
   scope :completed, -> { where(completed: true) }
+  scope :pending, -> { where("due_date > ? AND completed = ?", Date.current, false) }
+  scope :expired, -> { where("due_date < ?  AND completed = ?", Date.current, false) }
   scope :urgent, -> { where(due_date: (Time.current..24.hours.from_now)).where(completed: false) }
 
   def notify_urgent_tasks
