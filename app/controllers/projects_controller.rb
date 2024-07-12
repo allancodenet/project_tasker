@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:edit, :update, :destroy, :show]
   def index
-    @pagy, @projects = pagy(Project.includes(:tasks), items: 5)
+    @pagy, @projects = pagy(current_user.projects.includes(:tasks), items: 5)
   end
 
   def create
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def project_params
