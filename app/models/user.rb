@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ROLES = [:team_leader, :team_member]
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -9,6 +11,7 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy, class_name: "Noticed::Notification"
   belongs_to :organization, optional: true
   accepts_nested_attributes_for :owned_organization, reject_if: :all_blank
+  after_create :assign_default_role
   before_create :set_organization, if: :created_by_invite?
   def organization_owner?
     owned_organization.present?
@@ -16,5 +19,9 @@ class User < ApplicationRecord
 
   def set_organization
     self.organization_id = invited_by.owned_organization.id
+  end
+
+  def assign_default_role
+    add_role(:team_member) if roles.blank?
   end
 end
