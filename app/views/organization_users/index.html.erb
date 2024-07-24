@@ -1,0 +1,23 @@
+<div class="text-gray-200 p-4 w-full">
+  <div class="mx-auto">
+    <%= link_to "Invite Users",new_user_invitation_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white  font-medium"  %>
+  </div>
+  <div class="w-full mt-4">
+    <table class="bg-gray-800 rounded-md w-full">
+      <thead>
+        <tr class="text-left uppercase border-b border-gray-500">
+          <th class="px-4 py-3"> Email</th>
+          <th class="px-4 py-3"> roles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class=" border-b border-gray-500 capitalize">
+            <td class="px-4 py-3"><%= user.email %></td>
+            <td class="px-4 py-3"> member </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
