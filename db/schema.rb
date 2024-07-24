@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_24_212655) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_220133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -137,10 +137,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_212655) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.bigint "organization_id", null: false
+    t.bigint "team_id"
+    t.index ["organization_id"], name: "index_projects_on_organization_id"
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -162,6 +164,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_212655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
+    t.bigint "organization_id", null: false
+    t.index ["organization_id"], name: "index_tasks_on_organization_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
@@ -216,7 +220,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_212655) do
   end
 
   add_foreign_key "organizations", "users", column: "owner_id"
-  add_foreign_key "projects", "users"
+  add_foreign_key "projects", "organizations"
+  add_foreign_key "projects", "teams"
+  add_foreign_key "tasks", "organizations"
   add_foreign_key "tasks", "projects"
   add_foreign_key "team_members", "teams"
   add_foreign_key "team_members", "users"

@@ -3,11 +3,11 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:edit, :update, :destroy, :show]
   def index
-    @pagy, @projects = pagy(current_user.projects.includes(:tasks), items: 5)
+    @pagy, @projects = pagy(Project.includes(:tasks), items: 5)
   end
 
   def create
-    @project = current_user.projects.build(project_params)
+    @project = Project.new(project_params)
     if @project.save
       redirect_to projects_url, notice: "Project Created"
     else
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def project_params
