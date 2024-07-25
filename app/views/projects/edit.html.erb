@@ -4,7 +4,14 @@
     <div class=" fixed  inset-0 bg-gray-800 mt-8 p-8  size-96  mx-auto">
       <%= form_with model: @project do |form| %>
         <div class="mt-8 flex flex-col items-center">
-          <%= form.text_field :name,placeholder: "Enter Project Name" ,class: " rounded-md mb-4  p-3 w-full bg-gray-900 border-none w-full text-gray-200" %>
+          <div class="mb-4">
+            <%= form.label :project_name,  class: "text-gray-300" %>
+            <%= form.text_field :name, placeholder: "Enter Project Name" ,class: " rounded-md mb-4  p-3 w-full bg-gray-900 border-none w-full text-gray-200" %>
+          </div>
+          <div class="mb-4">
+            <%= form.label :assign_to_team,  class: "text-gray-300" %>
+            <%= form.collection_select :team_id, Team.all, :id, :name, placeholder: "Enter Project Name" ,class: " rounded-md mb-4  p-3 w-full bg-gray-900 border-none w-full text-gray-200" %>
+          </div>
           <%= form.submit "Update",class: " bg-blue-500 p-3 cursor-pointer  rounded-md  hover:bg-bg-blue-600 w-full", data: {turbo_frame: "_top"} %>
           <div class="absolute right-0 bottom-0 ">
             <%= button_to projects_path do %>

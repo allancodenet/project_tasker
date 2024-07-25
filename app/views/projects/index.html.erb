@@ -8,6 +8,7 @@
       <thead>
         <tr class="text-left uppercase border-b border-gray-500">
           <th class="px-4 py-3"> Name</th>
+          <th class="px-4 py-3"> Team</th>
           <th class="px-4 py-3"> Status</th>
         </tr>
       </thead>
@@ -15,6 +16,7 @@
         <% @projects.each do |project| %>
           <tr class=" border-b border-gray-500 capitalize">
             <td class="px-4 py-3"><%= project.name %></td>
+            <td class="px-4 py-3"><%= project.team&.name %></td>
             <td class="px-4 py-3"><%=project.tasks.completed.size%> / <%=project.tasks.size%> </td>
             <td class="py-3">
               <%= link_to  edit_project_path(project), data: { turbo: true, turbo_frame: :modal} do%>
