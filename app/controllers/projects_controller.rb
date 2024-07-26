@@ -1,9 +1,14 @@
 class ProjectsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :authenticate_owner!, only: %i[new create edit update destroy]
   before_action :set_project, only: [:edit, :update, :destroy, :show]
   def index
-    @pagy, @projects = pagy(Project.includes(:tasks), items: 5)
+    if current_user.organization_owner?
+      @pagy, @projects = pagy(Project.includes(:tasks), items: 5)
+    else
+      @pagy, @projects = pagy(current_user.projects.includes(:tasks), items: 5)
+    end
   end
 
   def create
@@ -40,7 +45,11 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = if current_user.organization_owner?
+      Project.find(params[:id])
+    else
+      current_user.projects.find(params[:id])
+    end
   end
 
   def project_params
