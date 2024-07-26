@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate_owner!
+    unless current_user.organization_owner?
+      flash[:alert] = "You are not authorized to perform this action"
+      redirect_back_or_to(root_path)
+    end
+  end
+
   def after_sign_in_path_for(resource)
     if resource.organization_owner?
       dashboard_index_url(subdomain: resource.owned_organization.subdomain)

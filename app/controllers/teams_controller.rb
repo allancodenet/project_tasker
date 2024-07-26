@@ -1,11 +1,16 @@
 class TeamsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :authenticate_owner!, only: %i[new create edit update destroy]
   before_action :set_team, only: %i[show edit update destroy]
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all
+    @teams = if current_user.organization_owner?
+      Team.all
+    else
+      current_user.teams
+    end
   end
 
   # GET /teams/1 or /teams/1.json
@@ -63,7 +68,11 @@ class TeamsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_team
-    @team = Team.find(params[:id])
+    @team = if current_user.organization_owner?
+      Team.find(params[:id])
+    else
+      current_user.teams.find(params[:id])
+    end
   end
 
   # Only allow a list of trusted parameters through.

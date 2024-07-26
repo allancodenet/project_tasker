@@ -20,11 +20,13 @@
         Calendar
       </a>
     </li>
-    <li class="mt-6">
-      <a href="/organization_users" class=" hover:text-gray-800 ">
-        Users
-      </a>
-    </li>
+    <%if current_user.organization_owner? %>
+      <li class="mt-6">
+        <a href="/organization_users" class=" hover:text-gray-800 ">
+          Users
+        </a>
+      </li>
+    <% end %>
     <li class="mt-6">
       <a href="/teams" class=" hover:text-gray-800 ">
         Teams
