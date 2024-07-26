@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   has_one :owned_organization, class_name: "Organization", foreign_key: :owner_id, inverse_of: :owner, dependent: :destroy
-  has_many :tasks, through: :projects
+  has_many :assigned_tasks, class_name: "Task", foreign_key: :assignee_id, inverse_of: :assignee
   has_many :team_members
   has_many :teams, through: :team_members
   has_many :projects, through: :teams

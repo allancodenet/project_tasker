@@ -22,7 +22,11 @@ class ProjectsController < ApplicationController
 
   def show
     @q = @project.tasks.ransack(params[:q])
-    @pagy, @tasks = pagy(@q.result.incomplete_first, items: 5)
+    if current_user.organization_owner? || current_user.has_role?(:team_leader)
+      @pagy, @tasks = pagy(@q.result.incomplete_first, items: 5)
+    else
+      @pagy, @tasks = pagy(@q.result.incomplete_first.where(assignee: current_user), items: 5)
+    end
   end
 
   def edit
