@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :authenticate_owner_or_team_leader!, only: %i[create destroy]
   before_action :set_task, only: %i[show edit update destroy]
   before_action :set_project
 

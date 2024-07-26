@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_owner_or_team_leader!
+    unless current_user.organization_owner? || current_user.has_role?(:team_leader)
+      flash[:alert] = "You are not authorized to perform this action"
+      redirect_back_or_to(root_path)
+    end
+  end
+
   def after_sign_in_path_for(resource)
     if resource.organization_owner?
       dashboard_index_url(subdomain: resource.owned_organization.subdomain)
