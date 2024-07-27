@@ -9,7 +9,7 @@
     <ul>
       <% @notifications.unread.each do |notification| %>
         <li class = "mb-6 border-b border-gray-900">
-          <%= link_to notification.message %>
+          <%= link_to notification.message, notification.url %>
         </li>
       <% end %>
     </ul>
