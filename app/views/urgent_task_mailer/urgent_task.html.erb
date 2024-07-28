@@ -1,5 +1,4 @@
 <div>
-  <li>
-    <%=  @urgent_task.name  %>
-  </li>
+  <p> <%=  @urgent_task.name  %> is due today</p>
+  <p> <%= link_to "Click here to view",project_url(@urgent_task.project, subdomain: @urgent_task.organization.subdomain ) %></p>
 </div>
