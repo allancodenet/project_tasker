@@ -63,6 +63,10 @@ gem "simple_calendar"
 gem "acts_as_tenant"
 gem "devise_invitable", "~> 2.0.0"
 gem "rolify"
+gem "pay", "~> 7.0"
+
+# To use Stripe, also include:
+gem "stripe", "~> 12.0"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
