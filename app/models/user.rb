@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   ROLES = [:team_leader, :team_member]
   rolify
-  pay_customer
+  pay_customer default_payment_processor: :stripe
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,

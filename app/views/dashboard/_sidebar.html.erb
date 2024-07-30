@@ -18,18 +18,21 @@
     <li class="mt-6">
       <a href="/calendar" class=" hover:text-gray-800 ">
         Calendar
+        <span class="text-xs text-orange-600"> enterprise</span>
       </a>
     </li>
     <%if current_user.organization_owner? %>
       <li class="mt-6">
         <a href="/organization_users" class=" hover:text-gray-800 ">
           Users
+          <span class="text-xs text-orange-600"> pro</span>
         </a>
       </li>
     <% end %>
     <li class="mt-6">
       <a href="/teams" class=" hover:text-gray-800 ">
         Teams
+        <span class="text-xs text-orange-600"> pro</span>
       </a>
     </li>
     <li class="mt-6">

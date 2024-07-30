@@ -39,5 +39,13 @@
     <div class="p-4">
       <%== pagy_nav(@pagy)%>
     </div>
+    <% if limit_reached? %>
+      <div class= "text-center">
+        <p>
+          Project limit reached
+          <%= link_to "Upgrade Here", subscriptions_path, class:" bg-blue-500 p-3 cursor-pointer  rounded-md  hover:bg-bg-blue-600" %>
+        </p>
+      </div>
+    <% end %>
   </div>
 </div>

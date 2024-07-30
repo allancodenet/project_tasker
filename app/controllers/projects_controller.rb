@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_owner!, only: %i[new create edit update destroy]
   before_action :set_project, only: [:edit, :update, :destroy, :show]
+  helper_method :limit_reached?
   def index
     if current_user.organization_owner?
       @pagy, @projects = pagy(Project.includes(:tasks), items: 5)
@@ -12,6 +13,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    if limit_reached?
+      flash[:alert] = "limit reached"
+      redirect_to projects_path
+      return
+    end
     @project = Project.new(project_params)
     if @project.save
       redirect_to projects_url, notice: "Project Created"
@@ -44,6 +50,10 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy!
     redirect_to projects_url, notice: "Project deleted"
+  end
+
+  def limit_reached?
+    !current_user.payment_processor.subscribed? && Project.count >= 5
   end
 
   private
