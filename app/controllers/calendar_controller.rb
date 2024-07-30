@@ -1,6 +1,7 @@
 class CalendarController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :require_subscription!
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
     @tasks = if current_user.organization_owner?

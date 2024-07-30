@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_subscription!
+    unless current_user.payment_processor.subscribed?
+      flash[:alert] = "Upgrade to acess this feature"
+      redirect_to subscriptions_path
+    end
+  end
+
   def after_sign_in_path_for(resource)
     if resource.organization_owner?
       dashboard_index_url(subdomain: resource.owned_organization.subdomain)
