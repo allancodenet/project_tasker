@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :authenticate_owner_or_team_leader!, only: %i[create destroy]
   before_action :set_task, only: %i[show edit update destroy]
   before_action :set_project
+  before_action :set_users
 
   # GET /tasks or /tasks.json
   def index
@@ -69,6 +70,15 @@ class TasksController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def set_users
+    @project = Project.find(params[:project_id])
+    @users = if current_tenant.owner.payment_processor.subscribed?
+      @project&.team&.users || [current_user]
+    else
+      [current_user]
+    end
   end
 
   # Only allow a list of trusted parameters through.
