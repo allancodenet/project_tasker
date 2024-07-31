@@ -36,9 +36,15 @@
       </a>
     </li>
     <li class="mt-6">
-      <a href="/subscriptions" class=" hover:text-gray-800 ">
-        plans
-      </a>
+      <% if current_user.payment_processor.subscribed? %>
+        <a href="/billing" class=" hover:text-gray-800 ">
+          upgrade
+        </a>
+      <%else %>
+        <a href="/subscriptions" class=" hover:text-gray-800 ">
+          plans
+        </a>
+      <% end %>
     </li>
   </ul>
 </aside>

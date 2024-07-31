@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :teams
-  resources :subscriptions
   authenticate :user, ->(user) { user.organization_owner? } do
+    get "billing", to: "billing#portal"
+    resources :subscriptions
     resources :organization_users do
       member do
         post "/change_role", to: "organization_users#change_role"
