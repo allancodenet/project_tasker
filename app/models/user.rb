@@ -24,6 +24,10 @@ class User < ApplicationRecord
     self.organization_id = invited_by.owned_organization.id
   end
 
+  def pay_customer_name
+    owned_organization.name
+  end
+
   def assign_default_role
     add_role(:team_member) if roles.blank?
   end
