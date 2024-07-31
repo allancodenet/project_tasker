@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
   before_action :authenticate_owner!, only: %i[new create edit update destroy]
-  before_action :require_subscription!
+  before_action :require_subscription!, only: %i[new create edit update destroy]
   before_action :set_team, only: %i[show edit update destroy]
 
   # GET /teams or /teams.json

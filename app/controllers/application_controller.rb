@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_enterprise_subscription!
-    unless current_user.payment_processor.subscribed?(processor_plan: "price_1PiOMdFvSzMgQCKRqsSc71HI")
+    unless current_tenant.owner.payment_processor.subscribed?(processor_plan: "price_1PiOMdFvSzMgQCKRqsSc71HI")
       flash[:alert] = "Upgrade to acess this feature"
       redirect_to billing_path
     end

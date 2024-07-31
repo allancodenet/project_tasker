@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
   end
 
   def limit_reached?
-    !current_user.payment_processor.subscribed? && Project.count >= 5
+    !current_user.payment_processor.subscribed? && Project.count >= 5 && current_user.organization_owner?
   end
 
   private

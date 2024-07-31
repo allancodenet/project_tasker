@@ -28,23 +28,23 @@
           <span class="text-xs text-orange-600"> pro</span>
         </a>
       </li>
+      <li class="mt-6">
+        <% if current_user.payment_processor.subscribed? %>
+          <a href="/billing" class=" hover:text-gray-800 ">
+            upgrade
+          </a>
+        <%else %>
+          <a href="/subscriptions" class=" hover:text-gray-800 ">
+            plans
+          </a>
+        <% end %>
+      </li>
     <% end %>
     <li class="mt-6">
       <a href="/teams" class=" hover:text-gray-800 ">
         Teams
         <span class="text-xs text-orange-600"> pro</span>
       </a>
-    </li>
-    <li class="mt-6">
-      <% if current_user.payment_processor.subscribed? %>
-        <a href="/billing" class=" hover:text-gray-800 ">
-          upgrade
-        </a>
-      <%else %>
-        <a href="/subscriptions" class=" hover:text-gray-800 ">
-          plans
-        </a>
-      <% end %>
     </li>
   </ul>
 </aside>
