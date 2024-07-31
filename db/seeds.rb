@@ -5,10 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# user = User.create!(
-#   email: "test@test.com",
-#   password: "password"
-# )
+User.create!(
+  full_name: "admin",
+  email: "admin@admin.com",
+  admin: true,
+  password: "password"
+)
 # projects = 20.times.map do
 #   Project.create!(name: Faker::Educator.unique.subject, user: user)
 # end

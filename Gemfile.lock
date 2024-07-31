@@ -191,6 +191,8 @@ GEM
     pay (7.3.0)
       rails (>= 6.0.0)
     pg (1.5.6)
+    pretender (0.5.0)
+      actionpack (>= 6.1)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -329,6 +331,7 @@ DEPENDENCIES
   pagy
   pay (~> 7.0)
   pg (~> 1.1)
+  pretender
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   ransack
