@@ -1,24 +1,27 @@
-# README
+# Real-World Multi-Tenant SaaS Using Ruby on Rails and Hotwire
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Project Overview
 
-* System dependencies
+This project teaches you how to build a multi-tenant SaaS (Software as a Service) application using Ruby on Rails and Hotwire. You'll learn how to create a scalable architecture that can serve multiple customers (tenants) with isolated data and custom subdomains. By the end of the course, you'll have a working SaaS application and the skills to build your own.
 
-* Configuration
+## Features Covered
 
-* Database creation
+- **Multi-Tenancy:** Implement isolated data stores for each tenant.
+- **Subdomains:** Create tenant-specific subdomains.
+- **Hotwire:** Utilize Hotwire for real-time, reactive features without the need for JavaScript frameworks.
+- **Authentication:** Set up secure user authentication and authorization.
+- **Billing:** Integrate with Stripe for handling subscriptions and payments.
+.
 
-* Database initialization
+## Getting Started
 
-* How to run the test suite
+### Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+Before you begin, ensure you have the following installed:
 
-* Deployment instructions
-
-* ...
+- Ruby 3.x
+- Rails 7.x
+- PostgreSQL
+- Redis
